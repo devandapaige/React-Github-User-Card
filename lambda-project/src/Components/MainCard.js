@@ -5,6 +5,7 @@ const MainCard = (props) => {
     <div className="personalCard">
       <h2>{props.name}</h2>
       <h3>{props.username}</h3>
+      <div className="maincardcont">
       <div className="textright">
         <p>Bio: {props.bio}</p>
         <p>Location: {props.location}</p>
@@ -12,6 +13,7 @@ const MainCard = (props) => {
       </div>
       <div className="picleft">
         <img src={props.picture} alt={props.name} />
+      </div>
       </div>
     </div>
   );

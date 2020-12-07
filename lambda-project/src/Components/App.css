@@ -1,38 +1,36 @@
-.App {
+body {
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*MAIN TITLE:*/
+h1 {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*PERSONAL CARD, Centered:*/
+.personalCard {
+  max-width: 400px;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: #F5D8D8;
+  margin: 0 auto;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.personalCard h2, h3 {
+  text-align: center;
+  margin: 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.maincardcont {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
-
-.App-link {
-  color: #61dafb;
+.picleft img {
+  width: 90%;
+  border-radius: 50%;
+  border: solid darkgreen 2px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*Text between cards:*/
+.usersFollowers {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
+/*FOLLOWER CARDS*/

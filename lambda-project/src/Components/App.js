@@ -7,18 +7,32 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      followerData: null,
-      data: null,
+      user: "devandapaige",
+      followerData: [],
+      data: {},
     };
   }
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      user: e.target.username,
+    });
+  };
   componentDidMount() {
     this.fetchData();
     console.log(`fetchData ran`);
     this.fetchFollowerData();
     console.log(`fetchFollowerData ran`);
   }
+  componentDidUpdate(prevProps, prevState) {
+    // runs when state has been updated with her user.
+    //if statement prevents infinite loop
+    if (this.state.user !== prevState.user) {
+      console.log(`There has been a change of username`);
+    }
+  }
   fetchData = () => {
-    fetch("http://api.github.com/users/devandapaige")
+    fetch(`http://api.github.com/users/${this.state.user}`)
       .then((res) => {
         return res.json();
       })
@@ -28,7 +42,7 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   };
   fetchFollowerData = () => {
-    fetch("http://api.github.com/users/devandapaige/followers")
+    fetch(`http://api.github.com/users/${this.user}/followers`)
       .then((res) => {
         return res.json();
       })
@@ -59,9 +73,17 @@ class App extends React.Component {
             location={this.state.data.location}
             forHire={this.state.data.hireable}
           />
-          <p className="usersFollowers">
-            {this.state.data.username}'s Followers:
-          </p>
+          <div>
+            <form onSubmit={this.handleChange}>
+              <input
+                type="text"
+                placeholder="Enter another GitHub username here"
+                value={this.state.user}
+              />
+              <button className="go">Go</button>
+            </form>
+          </div>
+          <p className="usersFollowers">{this.state.data.login}'s Followers:</p>
           <FollowerCard
             key={this.state.followerData.id}
             username={this.state.followerData.login}
