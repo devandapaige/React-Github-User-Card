@@ -1,14 +1,18 @@
 # Planning out App:
-# Main Parent (App) 
+
+# Main Parent (App)
+
 - Class Component
 - Holds State
 - Fetch API Data
 
-# Child (Card) 
+# Child (Main Card & Follower Card)
+
 - Receives state
 - Puts state into card DOM
 
 # Stretch Child (Search)
+
 - Class Component - Form
-- Holds State 
+- Holds State
 - Pushes State to Parent to pull API data. (?)

@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import Card from "./Card";
+import MainCard from "./MainCard";
+import FollowerCard from "./FollowerCard";
 
 class App extends React.Component {
   constructor() {
@@ -40,16 +41,32 @@ class App extends React.Component {
     return (
       <div className="app">
         <header>
-          <h1>Github User Card: Devandapaige</h1>
+          <h1>Github User Card: {this.state.data.login}</h1>
         </header>
         <div className="search"></div>
         <div className="cards">
-          <Card
+          {console.log(this.state.data)}
+          {console.log(this.state.followerData)}
+          <MainCard
             key={this.state.data.id}
             username={this.state.data.login}
-            img={this.state.data.avatar_url}
-            link={this.state.date.html_url}
+            picture={this.state.data.avatar_url}
+            name={this.state.data.name}
             bio={this.state.data.bio}
+            link={this.state.data.url}
+            followers={this.state.data.followers}
+            blog={this.state.data.blog}
+            location={this.state.data.location}
+            forHire={this.state.data.hireable}
+          />
+          <p className="usersFollowers">
+            {this.state.data.username}'s Followers:
+          </p>
+          <FollowerCard
+            key={this.state.followerData.id}
+            username={this.state.followerData.login}
+            picture={this.state.followerData.avatar_url}
+            name={this.state.followerData.name}
           />
         </div>
       </div>
