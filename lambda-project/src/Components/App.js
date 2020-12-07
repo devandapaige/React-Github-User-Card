@@ -23,6 +23,7 @@ class App extends React.Component {
     console.log(`fetchData ran`);
     this.fetchFollowerData();
     console.log(`fetchFollowerData ran`);
+    console.log(this.state.user);
   }
   componentDidUpdate(prevProps, prevState) {
     // runs when state has been updated with her user.
@@ -42,7 +43,7 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   };
   fetchFollowerData = () => {
-    fetch(`http://api.github.com/users/${this.user}/followers`)
+    fetch(`http://api.github.com/users/${this.state.user}/followers`)
       .then((res) => {
         return res.json();
       })
@@ -78,18 +79,21 @@ class App extends React.Component {
               <input
                 type="text"
                 placeholder="Enter another GitHub username here"
-                value={this.state.user}
               />
               <button className="go">Go</button>
             </form>
           </div>
           <p className="usersFollowers">{this.state.data.login}'s Followers:</p>
-          <FollowerCard
-            key={this.state.followerData.id}
-            username={this.state.followerData.login}
-            picture={this.state.followerData.avatar_url}
-            name={this.state.followerData.name}
-          />
+          <div className="followers">
+          {this.state.followerData.map((follower, index) => (
+            <FollowerCard
+              key={index}
+              username={follower.login}
+              picture={follower.avatar_url}
+              name={follower.name}
+            />
+          ))}
+          </div>
         </div>
       </div>
     );
