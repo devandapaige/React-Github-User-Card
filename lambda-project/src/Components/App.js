@@ -85,14 +85,13 @@ class App extends React.Component {
           </div>
           <p className="usersFollowers">{this.state.data.login}'s Followers:</p>
           <div className="followers">
-          {this.state.followerData.map((follower, index) => (
-            <FollowerCard
-              key={index}
-              username={follower.login}
-              picture={follower.avatar_url}
-              name={follower.name}
-            />
-          ))}
+            {this.state.followerData.map((follower, index) => (
+              <FollowerCard
+                key={index}
+                username={follower.login}
+                picture={follower.avatar_url}
+              />
+            ))}
           </div>
         </div>
       </div>

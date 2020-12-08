@@ -28,6 +28,15 @@ h3 {
   border-radius: 50%;
   border: solid darkgreen 2px;
 }
+/* Form */
+form {
+  margin: 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+form input {
+  width: ;
+}
 /*Text between cards:*/
 .usersFollowers {
   text-align: center;
