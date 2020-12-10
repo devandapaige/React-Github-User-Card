@@ -11,13 +11,20 @@ class App extends React.Component {
       followerData: [],
       data: {},
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange = (e) => {
-    this.setState({
-      ...this.state,
-      user: e.target.username,
-    });
-  };
+
+  handleChange(e) {
+    this.setState({ user: e.target.value });
+    console.log(this.state.user)
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(`new username submitted`)
+  }
+
   componentDidMount() {
     this.fetchData();
     console.log(`fetchData ran`);
@@ -26,11 +33,10 @@ class App extends React.Component {
     console.log(this.state.user);
   }
   componentDidUpdate(prevProps, prevState) {
-    // runs when state has been updated with her user.
+    // runs when state has been updated with new user.
     //if statement prevents infinite loop
-    if (this.state.user !== prevState.user) {
-      console.log(`There has been a change of username`);
-    }
+    //this.fetchData();
+    //this.fetchFollowerData();
   }
   fetchData = () => {
     fetch(`http://api.github.com/users/${this.state.user}`)
@@ -75,10 +81,14 @@ class App extends React.Component {
             forHire={this.state.data.hireable}
           />
           <div>
-            <form onSubmit={this.handleChange}>
+            <form onSubmit={this.handleSubmit}>
+              <label for="gitusername">Github Username: </label>
               <input
                 type="text"
+                name="gitusername"
                 placeholder="Enter another GitHub username here"
+                value={this.state.user}
+                onChange={this.handleChange}
               />
               <button className="go">Go</button>
             </form>
@@ -94,6 +104,11 @@ class App extends React.Component {
             ))}
           </div>
         </div>
+        <footer>
+          <p>
+            <a href="andapaige.com">Coded by Amanda Nelson</a>
+          </p>
+        </footer>
       </div>
     );
   }

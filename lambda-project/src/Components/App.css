@@ -1,6 +1,7 @@
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: darkgrey;
 }
 /*MAIN TITLE:*/
 h1 {
@@ -35,7 +36,18 @@ form {
   text-align: center;
 }
 form input {
-  width: ;
+  width: 250px;
+}
+form button {
+  background-color: darkgreen;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 2.2rem;
+}
+form button:hover {
+  cursor: pointer;
+  background-color: green;
 }
 /*Text between cards:*/
 .usersFollowers {
@@ -61,4 +73,19 @@ form input {
   width: 90%;
   display: block;
   margin: 0 auto;
+  border-radius: 50%;
+}
+/* Footer */
+footer {
+  background-color: #f5d8d8;
+  color: black;
+  margin: 1rem 0 0 0;
+  padding: 1rem;
+}
+footer p {
+  display: block;
+  text-align: center;
+}
+footer p a {
+  color: darkgray;
 }
